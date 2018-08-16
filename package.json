@@ -1,0 +1,55 @@
+{
+  "name": "theymightbegiants",
+  "version": "1.0.0",
+  "description": "Band Website",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrumrineCoder/TheyMightBeGiants.git"
+  },
+  "author": "Nicolas Crumrine, the Crumrine Coder",
+  "license": "MIT",
+  "dependencies": {
+    "async": "*",
+    "bcryptjs": "*",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^5.0.1",
+    "ejs": "^2.6.1",
+    "express": "*",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "^5.2.0",
+    "favicon": "0.0.2",
+    "genius-api": "^0.4.1",
+    "handlebars": "^4.0.11",
+    "http": "0.0.0",
+    "logger": "0.0.1",
+    "moment": "^2.22.2",
+    "mongodb": "*",
+    "mongoose": "^5.1.5",
+    "morgan": "*",
+    "nodemon": "^1.17.5",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "passport-remember-me": "0.0.1",
+    "path": "^0.12.7",
+    "pug": "^2.0.3",
+    "request": "^2.87.0",
+    "serve-favicon": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/CrumrineCoder/TheyMightBeGiants/issues"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "homepage": "https://github.com/CrumrineCoder/TheyMightBeGiants#readme",
+  "devDependencies": {
+    "dotenv": "^5.0.1"
+  }
+}

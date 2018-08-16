@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body ng-app="album">
+
+  <div class="landing-image">
+    <div class="landing-text">
+      <h1>They Might Be Giants</h1>
+    </div>
+    <ul class="landing-footer">
+      <li class="social-link">
+        <a href="https://www.facebook.com/theymightbegiants/" target="_blank">
+          <span class="social-link-icon">
+            <i class="fab fa-facebook-f"></i>
+          </span>
+          <span class="social-link-label">Facebook</span>
+        </a>
+      </li>
+      <li class="social-link">
+        <a href="https://twitter.com/tmbg" target="_blank">
+          <span class="social-link-icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+          <span class="social-link-label">Twitter</span>
+        </a>
+      </li>
+      <li class="social-link">
+        <a href="http://tmbgareok.tumblr.com/" target="_blank">
+          <span class="social-link-icon">
+            <i class="fab fa-tumblr"></i>
+          </span>
+          <span class="social-link-label">Tumblr</span>
+        </a>
+      </li>
+      <li class="social-link">
+        <a href="https://www.instagram.com/flansyflans/" target="_blank">
+          <span class="social-link-icon">
+            <i class="fab fa-instagram"></i>
+          </span>
+          <span class="social-link-label">Instagram</span>
+        </a>
+      </li>
+      <li class="social-link">
+        <a href="https://www.youtube.com/channel/UCTZ0pVJExw6z0XjqEzchX8g" target="_blank">
+          <span class="social-link-icon">
+            <i class="fab fa-youtube"></i>
+          </span>
+          <span class="social-link-label">Youtube</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="newsletter-section" class="section">
+    <img id="flood-live" class="rounded-image" src="../public/IMAGES/Flood-Live-in-Australia-poster-V.jpg" />
+    <div id="newsletter-section-text">
+      <h1>Hear How We Sound Live!</h1>
+      <h3>Download for free a recording of our tour of playing
+        <u>Flood</u> live in Australia below.
+        <br/> You'll also have a chance to win a ticket for our tour on the JoCo cruise.
+        <br/> Just sign up for our mailing list.
+      </h3>
+      <div class="newsletter-form-wrapper newsletter-form-wrapper--layoutFloat newsletter-form-wrapper--alignCenter">
+        <form class="newsletter-form">
+          <div class="newsletter-form-body">
+            <div class="newsletter-form-fields-wrapper form-fields">
+              <div id="email-yui_3_17_2_8_1483559300953_5927" class="newsletter-form-field-wrapper form-item field email required">
+                <input id="email-yui_3_17_2_8_1483559300953_5927-field" class="newsletter-form-field-element field-element" name="email"
+                  x-autocompletetype="email" type="text" spellcheck="false" placeholder="Email Address">
+              </div>
+            </div>
+            <div class="newsletter-form-button-wrapper submit-wrapper">
+              <button class="white-ghost-button sqs-system-button sqs-editable-button-layout sqs-editable-button-style sqs-editable-button-shape"
+                type="submit" value="Sign Up">
+                <span class="newsletter-form-spinner sqs-spin light large"></span>
+                <span class="newsletter-form-button-label">SIGN UP</span>
+                <span class="newsletter-form-button-icon"></span>
+              </button>
+            </div>
+          </div>
+          <div class="hidden form-submission-html" data-submission-html=""></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <div class="divider">
+    <div class="divider-wrapper">
+      <h1 class="divider-h1">Touring</h1>
+      <a class="external-divider-link">View All Tours and Tour Information
+        <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  <div id="touring-section" class="section" ng-controller="tourController">
+
+    <button id="see-tour-nearest" ng-click="getLocation()" class="white-ghost-button">See Closest Tour</button>
+
+    <div ng-hide="closestTour == null">
+      <h2> Closest Tour: </h2>
+      <div class="tour-event">
+        <div class="tour-date">
+          <div class="tour-date-month">{[{closestTour.month}]}</div>
+          <div class="tour-date-day">{[{closestTour.day}]}</div>
+        </div>
+        <div class="tour-date">
+          <div class="tour-date-desc">{[{closestTour.weekday}]}</div>
+        </div>
+        <a target="_blank" class="tour-event-link">
+          <div class="tour-info red">
+            <p class="tour-location">{[{closestTour.location}]}</p>
+          </div>
+          <div class="tour-info">
+            <p class="tour-location">{[{closestTour.venue}]}</p>
+          </div>
+          <div class="tour-info">
+            <p class="tour-location">{[{closestTour.country}]}</p>
+          </div>
+        </a>
+        <div class="tour-tickets">
+          <button type="button" class="btn  btn-ghost">
+            <span class="btn-text-active-hidden">RSVP</span>
+          </button>
+          <a target="_blank" class="btn tickets" href="https://www.festivalticketing.com/boxoffice/?cref=7BE3894B-1765-482A-8FA8-A88E7956153A"
+            target="_blank">Buy Tickets</a>
+          <button type="button" class="btn btn-ghost">
+            <a target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </button>
+          <button type="button" class="btn btn-ghost">
+            <a target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </button>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <h2>Upcoming Tours:</h2>
+    <div class="tour-event" ng-repeat="tour in Tours">
+      <div class="tour-date">
+        <div class="tour-date-month">{[{tour.month}]}</div>
+        <div class="tour-date-day">{[{tour.day}]}</div>
+      </div>
+      <div class="tour-date">
+        <div class="tour-date-desc">{[{tour.weekday}]}</div>
+      </div>
+      <a target="_blank" class="tour-event-link">
+        <div class="tour-info red">
+          <p class="tour-location">{[{tour.location}]}</p>
+        </div>
+        <div class="tour-info">
+          <p class="tour-location">{[{tour.venue}]}</p>
+        </div>
+        <div class="tour-info">
+          <p class="tour-location">{[{tour.country}]}</p>
+        </div>
+      </a>
+      <div class="tour-tickets">
+        <button type="button" class="btn  btn-ghost">
+          <span class="btn-text-active-hidden">RSVP</span>
+        </button>
+        <a target="_blank" class="btn tickets" href="https://www.festivalticketing.com/boxoffice/?cref=7BE3894B-1765-482A-8FA8-A88E7956153A"
+          target="_blank">Buy Tickets</a>
+        <button type="button" class="btn btn-ghost">
+          <a target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </button>
+        <button type="button" class="btn btn-ghost">
+          <a target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </button>
+      </div>
+    </div>
+<!--
+    <form method="post" action="/create2" class="form-comment" id="commenting-form">
+      <input name="id" placeholder="Write your Album here." value="5b5110fafb6fc069480fc752" type="hidden" />
+      <label for="month">Username</label>
+      <input name="month" placeholder="Write your Username here." required="true" type="text" />
+      <br />
+      <label for="day">Comment</label>
+      <input name="day" placeholder="Write your Comment here." required="true" type="text"></input>
+      <br />
+      <label for="weekday">Comment</label>
+      <input name="weekday" placeholder="Write your Comment here." required="true" type="text"></input>
+      <br />
+      <label for="location">Comment</label>
+      <input name="location" placeholder="Write your Comment here." required="true" type="text"></input>
+      <br />
+      <label for="venue">Comment</label>
+      <input name="venue" placeholder="Write your Comment here." required="true" type="text"></input>
+      <br />
+      <label for="country">Comment</label>
+      <input name="country" placeholder="Write your Comment here." required="true" type="text"></input>
+      <br />
+      <button class="white-ghost-button" type="submit" style="margin-bottom: 10px;">Submit</button>
+    </form> -->
+    <a class="external-divider-link bottom-link">View All Tours and Tour Information
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="divider">
+    <div class="divider-wrapper">
+      <h1 class="divider-h1">Tunes</h1>
+      <a class="external-divider-link">View Discography
+        <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  <div id="tunes-section" class="section" ng-controller="albumController">
+    <!--    <iframe width="854" height="480" src="https://www.youtube.com/embed/Vn3BZvGroKg" frameborder="0" id="tunes-video" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe> -->
+
+
+    <div id="lyrics-container">
+      <div id="songs-menu-container">
+        <ul class="songs-menu">
+          <li ng-repeat="song in tracklist" ng-click="select($index)" ng-class="{'active': $index == currentSong}">
+            <h5 ng-click='go(song.id)'>
+              {[{song.name}]}
+            </h5>
+          </li>
+
+        </ul>
+      </div>
+      <div class="lyrics-content">
+        <p>{[{lyrics}]}</p>
+      </div>
+      <div id="album-cover-container">
+        <img id="album-cover" src="../public/IMAGES/album-cover.jpg">
+        <div class="CommentContainer" ng-repeat="comment in comments | reverse  | limitTo: 10 | limitTo:2">
+          <div class="comment-container">
+            <p class="comment-username">{[{comment.user}]}</p>
+            <p class="comment-date">{[{comment.date | date:'medium'}]}</p>
+            <p class="comment-text">{[{comment.text}]}</p>
+          </div>
+        </div>
+        <form method="post" action="/create" class="form-comment" id="commenting-form">
+          <!--   <label for="album">Album:</label> -->
+          <input name="album" placeholder="Write your Album here." value="I Like Fun" type="hidden" />
+          <label for="user">Username</label>
+          <input name="user" placeholder="Write your Username here." required="true" type="text" />
+          <br />
+          <label for="text">Comment</label>
+          <textarea name="text" placeholder="Write your Comment here." required="true" type="text"></textarea>
+          <br />
+          <button class="white-ghost-button" type="submit" style="margin-bottom: 10px;">Submit</button>
+        </form>
+      </div>
+    </div>   
+    <div class="CommentContainer" ng-repeat="comment in comments | reverse | limitTo: limit : 2">
+      <div class="comment-container">
+        <p class="comment-username">{[{comment.user}]}</p>
+        <p class="comment-date">{[{comment.date | date:'medium'}]}</p>
+        <p class="comment-text">{[{comment.text}]}</p>
+      </div>
+    </div>
+
+  <button ng-click="loadMore()" ng-hide="isAllLoaded" class="white-ghost-button" id="loadMore">Load More</button>
+
+    <div class="button-wrapper">
+      <a target="_blank" class="btn">
+        <i class="fa fa-compact-disc"></i>
+        <p> Official Store </p>
+      </a>
+      <a target="_blank" class="btn btn-ghost ">
+        <i class="fab fa-spotify"></i>
+        <p> Spotify </p>
+      </a>
+      <a target="_blank" class="btn btn-ghost ">
+        <i class="fab fa-itunes-note"></i>
+        <p> iTunes </p>
+      </a>
+      <a target="_blank" class="btn btn-ghost ">
+        <i class="fab fa-apple"></i>
+        <p> Apple Music </p>
+      </a>
+      <a target="_blank" class="btn btn-ghost ">
+        <i class="fa fa-plus"></i>
+        <p> Other Stores </p>
+      </a>
+    </div>
+    <a class="external-divider-link bottom-link">View Discography
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="divider">
+    <div class="divider-wrapper">
+      <h1 class="divider-h1">Dial-A-Song</h1>
+      <a class="external-divider-link">Learn More
+        <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  <div id="dial-section" class="section">
+    <img id="dial-section-image" class="rounded-image" src="../public/IMAGES/dialasong.jpg" />
+    <div id="dial-section-text">
+      <h3>
+        The free Dial-A-Song service was traditionally a toll-free phone number that allowed fans to listen to a free song every
+        week for decades. While it's still avaliable in it's traditional form at (844) 387-6962, you can now view songs on
+        the
+        <a target="_blank" class="red" href="https://dialasong.com">Dial-A-Song website</a> or the mobile apps for Apple and Android. Go to that site every Wednesday or subscribe to
+        the
+        <a target="_blank" href="https://www.youtube.com/channel/UCTZ0pVJExw6z0XjqEzchX8g" class="red"> TMBG YouTube Channel </a> and get notified every time a new song goes up.
+      </h3>
+      <h2>Get the App on your Phone:</h2>
+      <div class="button-wrapper">
+        <a target="_blank" class="btn btn-ghost">
+          <i class="fab fa-apple"></i>
+          Apple
+        </a>
+        <a target="_blank" class="btn btn-ghost ">
+          <i class="fab fa-android"></i>
+          Android
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+  <div id="contact-section" class="section">
+
+    <div class="divider-wrapper">
+      <h1 class="divider-h1">Connect</h1>
+    </div>
+    <div id="contact-icons">
+      <div class="contact-item">
+        <h2>Facebook</h2>
+        <a target="_blank" class="red" href="https://www.facebook.com/theymightbegiants/">
+          <i class="fab fa-facebook-f contact-icon"></i> / theymightbegiants </a>
+      </div>
+      <div class="contact-item">
+        <h2>Twitter</h2>
+        <a target="_blank" class="red" href="https://twitter.com/tmbg">
+          <i class="fab fa-twitter contact-icon"></i> / tmbg </a>
+      </div>
+      <div class="contact-item">
+        <h2>Tumblr</h2>
+        <a target="_blank" class="red" href="http://tmbgareok.tumblr.com/">
+          <i class="fab fa-tumblr contact-icon"></i> / TMBGareOK </a>
+      </div>
+      <div class="contact-item">
+        <h2>Instagram</h2>
+        <a target="_blank" class="red" href="https://www.instagram.com/flansyflans/">
+          <i class="fab fa-instagram contact-icon"></i> / flansyflans </a>
+      </div>
+      <div class="contact-item">
+        <h2>Youtube</h2>
+        <a target="_blank" class="red" href="https://www.youtube.com/channel/UCTZ0pVJExw6z0XjqEzchX8g">
+          <i class="fab fa-youtube contact-icon"></i> / ParticleMen </a>
+      </div>
+
+    </div>
+
+    <form class="newsletter-form" id="contact-form">
+      <h2>Join the They Might Be Giants Mailing List</h2>
+      <div class="newsletter-form-body">
+        <div class="newsletter-form-fields-wrapper form-fields">
+          <div id="email-yui_3_17_2_8_1483559300953_5927" class="newsletter-form-field-wrapper form-item field email required">
+            <input id="email-yui_3_17_2_8_1483559300953_5927-field" class="newsletter-form-field-element field-element" name="email"
+              x-autocompletetype="email" type="text" spellcheck="false" placeholder="Email Address">
+          </div>
+        </div>
+        <div class="newsletter-form-button-wrapper submit-wrapper">
+          <button class="white-ghost-button sqs-system-button sqs-editable-button-layout sqs-editable-button-style sqs-editable-button-shape"
+            type="submit" value="Sign Up">
+            <span class="newsletter-form-spinner sqs-spin light large"></span>
+            <span class="newsletter-form-button-label">SIGN UP</span>
+            <span class="newsletter-form-button-icon"></span>
+          </button>
+        </div>
+      </div>
+      <div class="hidden form-submission-html" data-submission-html=""></div>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script type="text/javascript" src="./controllers/ajaxRequest.js"></script>
+  <script type="text/javascript" src="./controllers/landing.js"></script>
+
+</body>
+
+</html>

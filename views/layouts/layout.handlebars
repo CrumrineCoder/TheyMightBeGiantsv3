@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width">
+    <title>They Might Be Giants</title>
+    <meta name="description" content="Brooklyn Ambassadors of Love's Official Website" />
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div id="menu-icon">
+            <a href="#" id="menu-icon">
+                <hr>
+                <hr>
+                <hr>
+            </a>
+        </div>
+    </header>
+    <div id="mobile-nav">
+        <nav>
+        <ul>
+            <li>
+                <a class="active-tab" href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Blog</a>
+            </li>
+            <li>
+                <a href="#">Tour</a>
+            </li>
+            <li>
+                <a href="#">Music</a>
+            </li>
+            <li>
+                <a href="#">Merch</a>
+            </li>
+            <li>
+                <a href="#">Dial-A-Song</a>
+            </li>
+            <li>
+                <a href="#">Radio Network</a>
+            </li>
+            {{#if user}}
+            <li>
+                <a href="/users/logout">Logout</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/users/login">Login</a>
+            </li>
+            <li>
+                <a href="/users/register">Register</a>
+            </li>
+            {{/if}}
+        </ul>
+        </nav>
+    </div>
+    <div class="container">
+        {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}} {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}} {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}} {{{body}}}
+    </div>
+</body>
+
+</html>
