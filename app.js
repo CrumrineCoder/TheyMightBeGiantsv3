@@ -60,7 +60,7 @@ require('dotenv').config();
 
 
 const mLab = 'mongodb://' + process.env.dbUSER + ':' + process.env.dbPASS + process.env.dbHOST + '/' + process.env.dbNAME + '?authMode=scram-sha1'; 
-
+console.log(mLab);
 mongoose.connect(mLab);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
