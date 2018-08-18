@@ -21,6 +21,8 @@ $("#menu-icon").bind("click", function (e) {
     }
 });
 
+
+
 $("#mobile-nav").bind("click", function () {
     event.stopPropagation();
 });
