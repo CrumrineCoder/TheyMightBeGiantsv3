@@ -21,8 +21,6 @@ $("#menu-icon").bind("click", function (e) {
     }
 });
 
-
-
 $("#mobile-nav").bind("click", function () {
     event.stopPropagation();
 });
@@ -81,7 +79,8 @@ function Deg2Rad(deg) {
 
         function showTour(data) {
             var TourObject = JSON.parse(data);
-            var dates = TourObject[0].dates; 
+            var dates = TourObject[0].dates;
+            console.log(dates); 
             // Show the Comments
             for (var i = 0; i < dates.length; i++) {
                // ajaxRequest('GET', apiUrl + "geocoding/?address=" + dates[i].location + "&id=" + dates[i]._id, showGeo);
@@ -104,6 +103,7 @@ function Deg2Rad(deg) {
                 $scope.Coords.push({ "lat": lat, "lng": lng, "address": address, "id": id });
                 $scope.id++; 
             });
+            console.log($scope.Coords);
             
       /*      var object = (JSON.parse(JSON.parse(data).geoData.body));
             var id = JSON.parse(data).id;
@@ -135,6 +135,8 @@ function Deg2Rad(deg) {
                     mindif = dif;
                 }
             }
+            console.log($scope.Tours);
+            console.log($scope.Coords); 
             for (var i = 0; i < $scope.Tours.length; i++) {
                 if ($scope.Tours[i]["_id"] === $scope.Coords[closest].id) {
                     $scope.$apply(function () {
