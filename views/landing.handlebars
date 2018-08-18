@@ -97,9 +97,7 @@
     </div>
   </div>
   <div id="touring-section" class="section" ng-controller="tourController">
-
-    <button id="see-tour-nearest" ng-click="getLocation()" class="white-ghost-button">See Closest Tour</button>
-
+    <button id="see-tour-nearest" ng-disabled="Coords.length != Tours.length" ng-click="getLocation()" class="white-ghost-button">See Closest Tour</button>
     <div ng-hide="closestTour == null">
       <h2> Closest Tour: </h2>
       <div class="tour-event">

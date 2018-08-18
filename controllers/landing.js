@@ -79,10 +79,11 @@ function Deg2Rad(deg) {
 
         function showTour(data) {
             var TourObject = JSON.parse(data);
-            var dates = TourObject[0].dates;
+            var dates = TourObject[0].dates; 
             // Show the Comments
             for (var i = 0; i < dates.length; i++) {
-                ajaxRequest('GET', apiUrl + "geocoding/?address=" + dates[i].location + "&id=" + dates[i]._id, showGeo);
+               // ajaxRequest('GET', apiUrl + "geocoding/?address=" + dates[i].location + "&id=" + dates[i]._id, showGeo);
+               ajaxRequest('GET', "https://nominatim.openstreetmap.org/search/" + dates[i].location + "?format=json&addressdetails=1&limit=1&polygon_svg=1", showGeo, dates[i]["_id"])
                 $scope.$apply(function () {
                     $scope.Tours.push(dates[i]);
                 });
@@ -92,15 +93,24 @@ function Deg2Rad(deg) {
 
         $scope.Coords = [];
 
-        function showGeo(data) {
-            var object = (JSON.parse(JSON.parse(data).geoData.body));
+        function showGeo(data, id) {
+            var object = JSON.parse(data);
+            var lat = object[0].lat; 
+            var lng = object[0].lon; 
+            var address = object[0].display_name; 
+            $scope.$apply(function () {
+                $scope.Coords.push({ "lat": lat, "lng": lng, "address": address, "id": id });
+                $scope.id++; 
+            });
+            
+      /*      var object = (JSON.parse(JSON.parse(data).geoData.body));
             var id = JSON.parse(data).id;
             var lat = object.results["0"].geometry.location.lat;
             var lng = object.results["0"].geometry.location.lng;
             var address = object.results["0"].formatted_address
             $scope.$apply(function () {
                 $scope.Coords.push({ "lat": lat, "lng": lng, "address": address, "id": id });
-            });
+            }); */
         }
 
         $scope.getLocation = function () {
@@ -123,7 +133,6 @@ function Deg2Rad(deg) {
                     mindif = dif;
                 }
             }
-
             for (var i = 0; i < $scope.Tours.length; i++) {
                 if ($scope.Tours[i]["_id"] === $scope.Coords[closest].id) {
                     $scope.$apply(function () {
